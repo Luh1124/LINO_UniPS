@@ -1,7 +1,10 @@
 import torch
 from src.models import LiNo_UniPS 
-dependencies = ['torch', 'pytorch_lightning']
-DEFAULT_MODEL_URL = "https://huggingface.co/houyuanchen/lino/blob/main/lino.pth" 
+from src.data import TestData
+from src.data import DemoData
+dependencies = ['torch', 'pytorch_lightning', 'numpy']
+
+DEFAULT_MODEL_URL = "https://huggingface.co/houyuanchen/lino/resolve/main/lino.pth"  
 
 def lino_unips(pretrained=True, task_name="DiLiGenT", **kwargs):
     model = LiNo_UniPS(task_name=task_name, **kwargs)
@@ -19,3 +22,8 @@ def lino_unips(pretrained=True, task_name="DiLiGenT", **kwargs):
             
     return model
 
+def load_test_data(data_root: list, numofimages: int):
+    return TestData(data_root,numofimages)
+
+def load_data(input_imgs_list, input_mask):
+    return DemoData(input_imgs_list,input_mask)

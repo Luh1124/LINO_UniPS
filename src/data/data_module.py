@@ -122,7 +122,6 @@ class TestData(Dataset):
             self, 
             data_root: list = None, 
             numofimages: int = 16
-          
         ):
         self.data_root = data_root 
         self.numberOfImages = numofimages
